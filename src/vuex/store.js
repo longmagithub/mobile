@@ -152,7 +152,8 @@ const moduleNews = {
                 link: value.link,
                 pubDate: value.pubDate,
                 source: value.source,
-                desc: value.desc.replace(/ /g, '').trim(),
+                // desc: value.desc.replace(/ /g, '').trim(),
+                desc: value.desc,
                 html: value.html
               }
               result.push(aNews)
@@ -181,8 +182,90 @@ const moduleNews = {
     }
   }
 }
+const moduleCang = {
+  state: config.cangConfig,
+  getters: {},
+  mutations: {
+    setLoading (state, loading) {
+      state.isLoading = loading
+    },
+    setResultList (state, arr) {
+      state.resultList = arr
+    }
+  },
+  actions: {
+    generateCang (context, params) {
+      if (context.state.isLoading) {
+        return
+      }
+      let key = params.key
+			if (key === undefined || key === null || key.length === 0) {
+        Toast({
+          message: '内容不能为空',
+          duration: 800
+        })
+        return
+			}
+      const pattern = new RegExp('^[\u4e00-\u9fa5]{0,}$')
+      if (!pattern.test(key)) {
+        Toast({
+          message: '请输入汉字',
+          duration: 800
+        })
+        return
+      }
+      let setting = {
+        num: params.num,
+        type: params.type,
+        yayuntype: params.yayun,
+        key: params.key
+      }
+      Indicator.open()
+      context.commit('setLoading', true)
+      axios.get(config.apiList.CANG_API, config.axiosConfig.getGETConfig(setting))
+      .then(function (response) {
+        context.commit('setLoading', false)
+        Indicator.close()
+        if (response.data.showapi_res_code === 0) {
+          console.log(response)
+        } else {
+          Toast({
+            message: response.data.showapi_res_error,
+            duration: 1000
+          })
+        }
+      })
+      .catch(function (error) {
+         context.commit('setLoading', false)
+          Indicator.close()
+          Toast({
+            message: '连接异常，请检查网络',
+            duration: 1000
+          })
+          console.log(error)
+      })
+    }
+  }
+}
+const state = {
+  tab: 'news'
+}
+const mutations = {
+  setTab (state, index) {
+    state.tab = index
+  }
+}
+const actions = {
+  setTab (context, index) {
+    context.commit('setTab', index)
+  }
+}
 export default new Vuex.Store({
   modules: {
-    news: moduleNews
-  }
+    news: moduleNews,
+    cang: moduleCang
+  },
+  state,
+  mutations,
+  actions
 })

@@ -3,7 +3,7 @@
   const APPID = 32631
 
   // AXIOS 参数
-  const TIMEOUT = 5000
+  const TIMEOUT = 6000
   // 模块级别参数
   let newsConfig = {
     chanList: [
@@ -60,6 +60,59 @@
     allLoaded: false,
     showDetail: false
   }
+  let cangConfig = {
+    cangType: [
+      {
+        label: '五言',
+        value: '5'
+      }, {
+        label: '七言',
+        value: '7'
+      }
+    ],
+    num: 5,
+    position: 0,
+    positionList: [
+      {
+        text: '藏头',
+        typeNum: 1
+      },
+      {
+        text: '藏尾',
+        typeNum: 2
+      },
+      {
+        text: '藏中',
+        typeNum: 3
+      },
+      {
+        text: '递增',
+        typeNum: 4
+      },
+      {
+        text: '递减',
+        typeNum: 5
+      }
+    ],
+    yayuntype: 1,
+    yayunList: [
+      {
+        label: '双句一压',
+        value: '1'
+      },
+      {
+        label: '双句押韵',
+        value: '2'
+      },
+      {
+        label: '一三四押',
+        value: '3'
+      }
+    ],
+    key: '',
+    isLoading: false,
+    resultList: []
+  }
   // AXIOS 设置
   const axiosConfig = {
     getGETConfig: (params) => {
@@ -96,10 +149,12 @@
   // API 地址
   const apiList = {
     NEWSCHANNEL_API: 'http://route.showapi.com/109-34',
-    NEWSLIST_API: 'http://route.showapi.com/109-35'
+    NEWSLIST_API: 'http://route.showapi.com/109-35',
+    CANG_API: 'http://route.showapi.com/950-1'
   }
   export default {
     newsConfig,
+    cangConfig,
     axiosConfig,
     apiList
   }

@@ -1,5 +1,4 @@
 # mobile-vue
-<<<<<<< HEAD
 
 > vue for mobile
 
@@ -26,6 +25,3 @@ npm test
 ```
 
 For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
-=======
-vue+vuex+mintUI
->>>>>>> 35261bbb94667f78d08cef6a412f4f692607c2df

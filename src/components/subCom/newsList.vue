@@ -42,7 +42,7 @@ export default {
       return this.$store.state.news.newsList
     },
     shouldLoadMore: function () {
-      return !this.$store.state.news.allLoaded
+      return this.$store.state.tab === 'news' && !this.$store.state.news.allLoaded
     },
     selectedNews: function () {
       return this.$store.state.news.newsList[this.$store.state.news.currentNews] || null

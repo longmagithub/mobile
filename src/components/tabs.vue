@@ -9,7 +9,7 @@
                 talk tab content
             </mt-tab-container-item>
             <mt-tab-container-item id='cang'>
-                cang tab content
+                <cang></cang>
             </mt-tab-container-item>
             <mt-tab-container-item id='about'>
                 about
@@ -39,21 +39,32 @@
 <script>
 import store from '../vuex/store.js'
 import news from './news.vue'
+import cang from './cang.vue'
 export default{
   name: 'tabs',
   data () {
     return {
-      tab: 'news'
+      tab: store.state.tab
     }
   },
   created: function () {
   },
   computed: {
   },
+  watch: {
+      tab: function (newTab) {
+          // console.log(newTab)
+          store.dispatch('setTab', newTab)
+      }
+  },
   methods: {
+    // chooseTab: function (index) {
+    //   store.dispatch('setTab', index)
+    // }
   },
   components: {
-    news
+    news,
+    cang
   },
   store: store
 }
