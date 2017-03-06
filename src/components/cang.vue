@@ -65,7 +65,6 @@ export default {
   },
 	methods: {
 		generate: function () {
-			console.log(this.$refs.keywordInput.currentValue)
 			let params = {
 				num: this.cangNum,
 				type: this.positionList[this.position].typeNum,
@@ -103,5 +102,12 @@ export default {
 }
 #positionList>button{
 	flex:1;
+}
+#cangContent{
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	background-color: #F7F7F7
 }
 </style>

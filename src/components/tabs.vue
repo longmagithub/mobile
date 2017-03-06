@@ -12,7 +12,7 @@
                 <cang></cang>
             </mt-tab-container-item>
             <mt-tab-container-item id='about'>
-                about
+                <about></about>
             </mt-tab-container-item>
         </mt-tab-container>
         <!-- 底部TAB -->
@@ -40,6 +40,7 @@
 import store from '../vuex/store.js'
 import news from './news.vue'
 import cang from './cang.vue'
+import about from './about.vue'
 export default{
   name: 'tabs',
   data () {
@@ -64,7 +65,8 @@ export default{
   },
   components: {
     news,
-    cang
+    cang,
+    about
   },
   store: store
 }

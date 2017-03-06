@@ -227,7 +227,19 @@ const moduleCang = {
         context.commit('setLoading', false)
         Indicator.close()
         if (response.data.showapi_res_code === 0) {
-          console.log(response)
+          if (response.data.showapi_res_body.list.length === 0) {
+            Toast({
+              message: '生成失败，换内容再试试？',
+              duration: 800
+            })
+            context.commit('setResultList', [])
+            return
+          } else {
+            Toast({
+              message: '生成成功！',
+              duration: 500
+            })
+          }
           let resultList = []
           for (let item of response.data.showapi_res_body.list) {
             let arr = item.replace(/[，。]/g, ' ').trim().split(' ')
