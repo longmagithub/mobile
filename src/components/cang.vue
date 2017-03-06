@@ -26,10 +26,14 @@
 		v-model="yunNum"
 		:options="yayunList">
 	</mt-radio>
-
-
 	<mt-button size="large" type='primary' v-on:click='generate'>生成</mt-button>
 	
+	<div id='cangContent'>
+		<div class='cangItem' v-for='item in resultList'>
+			<p v-for='sentence in item'>{{sentence}}</p>
+		</div>
+	</div>
+
 </div>
 </template>
 <script>
@@ -51,6 +55,11 @@ export default {
 			yayunList: this.$store.state.cang.yayunList
     }
   },
+	computed: {
+		resultList: function () {
+			return this.$store.state.cang.resultList
+		}
+	},
   created: function () {
     this.cangType = this.$store.state.cang.cangType
   },

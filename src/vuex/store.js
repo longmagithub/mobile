@@ -228,6 +228,12 @@ const moduleCang = {
         Indicator.close()
         if (response.data.showapi_res_code === 0) {
           console.log(response)
+          let resultList = []
+          for (let item of response.data.showapi_res_body.list) {
+            let arr = item.replace(/[，。]/g, ' ').trim().split(' ')
+            resultList.push(arr)
+          }
+          context.commit('setResultList', resultList)
         } else {
           Toast({
             message: response.data.showapi_res_error,
