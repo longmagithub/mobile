@@ -4,6 +4,7 @@
 }
 html, body { 
   height: 100%; 
+  background-color: #f8f8f8;
 }
 a,button,input,textarea{-webkit-tap-highlight-color: rgba(0,0,0,0)}
 .bottom_line {
@@ -22,3 +23,7 @@ img {
 	top: 6px;
   left: 6px;
 }*/
+/* 重写mintUI组件样式 */
+.mint-swipe-items-wrap{
+  overflow-y: scroll !important
+}

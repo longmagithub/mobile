@@ -4,27 +4,18 @@
     </mt-header>
 
     <mt-swipe :show-indicators="false" :auto="0" >
-      <mt-swipe-item>
+      <mt-swipe-item v-for='item in cardList'>
         <div class='swipe-items-wrap'>
           <div class='card'>
-            <p>世乒赛中国男女乒双双夺冠</p>
-            <span>2016-3-6<span>
-            <img src='http://img.lssdjt.com/201603/08092053630.jpg'></img>
+            <p>{{item.title}}</p>
+            <span>{{item.year}}-{{item.month}}-{{item.day}}</span><br>
+            <img v-if='item.img' :src='item.img'></img>
+            <img v-if='!item.img' src='../assets/img/history.jpg'></img>
           </div>
         </div>
-      </mt-swipe-item>
-      <mt-swipe-item>
-        <div class='swipe-items-wrap'>
-          <h2>222222</h2>
-        </div>
-      </mt-swipe-item>
-      <mt-swipe-item>
-        <div class='swipe-items-wrap'>
-          <h2>333333</h2>
-        </div>
-      </mt-swipe-item>
+      </mt-swipe-item>      
     </mt-swipe>
-    ?????
+
   </div>
 </template>
 <script>
@@ -37,13 +28,14 @@ export default {
   name: 'history',
   data () {
     return {
-
     }
   },
   computed: {
     cardList: function () {
-      this.$store.state.history.cardList
+      return this.$store.state.history.cardList
     }
+  },
+  method: {
   },
   store: store
 }
@@ -52,25 +44,57 @@ export default {
 #history{
   width: 100%;
   height: calc(100vh - 40px - 55px);
+  padding-bottom: 0;
+  background: url('../assets/img/wall-bg.jpg');
+  background-size: 100% 100%;
 }
 .swipe-items-wrap{
   box-sizing:border-box;
-  height: calc(100vh - 40px - 55px);
-  top: 0;
-  bottom: 0;
+  min-height: 100%;
+  padding: 20px 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
-.card{
-  
+.card{  
   box-sizing:border-box;
-  width: 80%;
+  width: 85%;
   padding: 10px;
   border: 1px solid lightgray;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border: 1px solid #ccc;
+  position: relative;
+  box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+  background-color: #f8f8f8
 }
 .card>p {
   font-size: 1.4rem;
+}
+.card>img{
+  margin: auto;
+}
+.card:before, 
+.card:after{
+	content:"";
+  position:absolute; 
+  z-index:-1;
+  box-shadow:0 0 20px rgba(0,0,0,0.8);
+  top:10px;
+  bottom:10px;
+  left:0;
+  right:0;
+  border-radius:100px / 10px;
+} 
+.card:after{
+	right:10px; 
+  left:auto;
+  -webkit-transform:skew(8deg) rotate(3deg); 
+  -moz-transform:skew(8deg) rotate(3deg);     
+  -ms-transform:skew(8deg) rotate(3deg);     
+   -o-transform:skew(8deg) rotate(3deg); 
+  transform:skew(8deg) rotate(3deg);
 }
 </style>

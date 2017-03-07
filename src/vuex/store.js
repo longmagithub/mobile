@@ -153,7 +153,7 @@ const moduleNews = {
                 pubDate: value.pubDate,
                 source: value.source,
                 // desc: value.desc.replace(/ /g, '').trim(),
-                desc: value.desc,
+                desc: value.desc.trim(),
                 html: value.html
               }
               result.push(aNews)
@@ -275,8 +275,10 @@ const moduleHistory = {
   },
   actions: {
     loadHistory (context) {
+      Indicator.open()
       axios.get(config.apiList.HISTORY_API, config.axiosConfig.getGETConfig({}))
         .then(function (response) {
+          Indicator.close()
           if (response.data.showapi_res_code === 0) {
             context.commit('setCardList', response.data.showapi_res_body.list)
           } else {
@@ -287,6 +289,7 @@ const moduleHistory = {
           }
         })
         .catch(function (error) {
+          Indicator.close()
           Toast({
             message: '连接异常，请检查网络',
             duration: 1000
