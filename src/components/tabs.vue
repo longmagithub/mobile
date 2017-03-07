@@ -5,8 +5,8 @@
             <mt-tab-container-item id='news'>
                 <news></news>
             </mt-tab-container-item>
-            <mt-tab-container-item id='talk'>
-                talk tab content
+            <mt-tab-container-item id='history'>
+                <history></history>
             </mt-tab-container-item>
             <mt-tab-container-item id='cang'>
                 <cang></cang>
@@ -21,9 +21,9 @@
                 <i slot="icon" class="fa fa-newspaper-o" aria-hidden="true"></i>
                 新闻
             </mt-tab-item>
-            <mt-tab-item id='talk'>
+            <mt-tab-item id='history'>
                 <i slot="icon" class="fa fa-smile-o" aria-hidden="true"></i>
-                不得姐
+                历史
             </mt-tab-item>
             <mt-tab-item id='cang'>
                 <i slot="icon" class="fa fa-pencil-square-o" aria-hidden="true"></i>
@@ -39,6 +39,7 @@
 <script>
 import store from '../vuex/store.js'
 import news from './news.vue'
+import history from './history.vue'
 import cang from './cang.vue'
 import about from './about.vue'
 export default{
@@ -56,6 +57,9 @@ export default{
       tab: function (newTab) {
           // console.log(newTab)
           store.dispatch('setTab', newTab)
+          if (newTab === 'history' && this.$store.state.history.cardList.length === 0) {
+              store.dispatch('loadHistory')
+          }
       }
   },
   methods: {
@@ -65,6 +69,7 @@ export default{
   },
   components: {
     news,
+    history,
     cang,
     about
   },

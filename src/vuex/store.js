@@ -265,6 +265,37 @@ const moduleCang = {
     }
   }
 }
+const moduleHistory = {
+  state: config.historyConfig,
+  getters: {},
+  mutations: {
+    setCardList (state, list) {
+      state.cardList = list
+    }
+  },
+  actions: {
+    loadHistory (context) {
+      axios.get(config.apiList.HISTORY_API, config.axiosConfig.getGETConfig({}))
+        .then(function (response) {
+          if (response.data.showapi_res_code === 0) {
+            context.commit('setCardList', response.data.showapi_res_body.list)
+          } else {
+            Toast({
+              message: response.data.showapi_res_error,
+              duration: 1000
+            })
+          }
+        })
+        .catch(function (error) {
+          Toast({
+            message: '连接异常，请检查网络',
+            duration: 1000
+          })
+          console.log(error)
+        })
+    }
+  }
+}
 const state = {
   tab: 'news'
 }
@@ -281,7 +312,8 @@ const actions = {
 export default new Vuex.Store({
   modules: {
     news: moduleNews,
-    cang: moduleCang
+    cang: moduleCang,
+    history: moduleHistory
   },
   state,
   mutations,
