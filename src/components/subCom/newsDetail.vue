@@ -12,7 +12,7 @@
                         <p v-on:click='closeShow'><i class="fa fa-times" aria-hidden="true"></i>关闭</p>
                     </div>
                     -->
-                    <mt-header title="新闻详情" id='detail-header'>
+                    <mt-header fixed title="新闻详情" id='detail-header'>
                         <p class='openWin' slot="left" v-on:click='goSource'>查看原文</p>
                         <p v-on:click='closeShow' slot="right"><i class="fa fa-times" aria-hidden="true"></i>关闭</p>
                     
@@ -20,10 +20,12 @@
 
                     <div id='content' v-html='selectedNews.html || "暂无内容"'>
                     </div>
+                    <!--
                     <div id='header' class='bottom_line top_line'>
                         <p class='openWin' v-on:click='goSource'>查看原文</p>
                         <p v-on:click='closeShow'><i class="fa fa-times" aria-hidden="true"></i>关闭</p>
                     </div>
+                    -->
                 </div>
             </mt-popup>
     
@@ -101,11 +103,12 @@ export default {
     top: 0;
     box-sizing:border-box;
     width: 90%;
+    height: calc( 100vh - 90px );
     margin-left: 5%;    
-    margin-top: 10px;
-    background-color: white;
-    padding: 5px 10px;
+    margin-top: 55px;
     margin-bottom: 20px;
+    background-color: white;
+    padding: 5px 15px;
     border: 1px solid #DDDDDD;
     overflow-y: scroll;
     /* 增加该属性，可以增加弹性 */

@@ -7,10 +7,12 @@
       <mt-swipe-item v-for='item in cardList'>
         <div class='swipe-items-wrap'>
           <div class='card'>
-            <p>{{item.title}}</p>
-            <span>{{item.year}}-{{item.month}}-{{item.day}}</span><br>
-            <img v-if='item.img' :src='item.img'></img>
-            <img v-if='!item.img' src='../assets/img/history.jpg'></img>
+            <div class='card_content'>
+              <p>{{item.title}}</p>
+              <span>{{item.year}}-{{item.month}}-{{item.day}}</span><br>
+              <img v-if='item.img' :src='item.img'></img>
+              <img v-if='!item.img' src='../assets/img/history.jpg'></img>
+            </div>            
           </div>
         </div>
       </mt-swipe-item>      
@@ -68,12 +70,21 @@ export default {
   border: 1px solid #ccc;
   position: relative;
   box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
-  background-color: #f8f8f8
+  background-color: #f8f8f8;
+  max-height: 60vh;
 }
-.card>p {
+.card_content{
+  display: flex;
+  flex-direction: column;
+  max-height: 60vh;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+}
+.card p {
   font-size: 1.4rem;
 }
-.card>img{
+.card img{
   margin: auto;
 }
 .card:before, 
