@@ -17,7 +17,7 @@
                         <p v-on:click='closeShow' slot="right"><i class="fa fa-times" aria-hidden="true"></i>关闭</p>
                     
                     </mt-header>
-
+                    <span id='content-top'></span>
                     <div id='content' v-html='selectedNews.html || "暂无内容"'>
                     </div>
                     <!--
@@ -61,7 +61,8 @@ export default {
       window.open(this.selectedNews.link)
     },
     closeShow: () => {
-      document.getElementById('detail-header').scrollIntoView(true)
+      document.getElementById('content-top').scrollIntoView(true)
+      document.getElementById('content').scrollTop = 0
       store.dispatch('setShowDetail', false)
     }
   },
