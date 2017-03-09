@@ -69,9 +69,6 @@ export default{
       }
   },
   methods: {
-    // chooseTab: function (index) {
-    //   store.dispatch('setTab', index)
-    // }
   },
   components: {
     news,
