@@ -24,4 +24,5 @@ npm run unit
 npm test
 ```
 
+This is a Demo showing how Vue2.0 + Vuex + Axios + MintUI works together using showAPI to fetch common data.
 For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
