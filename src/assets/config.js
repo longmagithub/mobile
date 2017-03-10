@@ -151,10 +151,10 @@
   }
   // API 地址
   const apiList = {
-    NEWSCHANNEL_API: 'http://route.showapi.com/109-34',
-    NEWSLIST_API: 'http://route.showapi.com/109-35',
-    CANG_API: 'http://route.showapi.com/950-1',
-    HISTORY_API: 'http://route.showapi.com/119-42'
+    NEWSCHANNEL_API: 'https://route.showapi.com/109-34',
+    NEWSLIST_API: 'https://route.showapi.com/109-35',
+    CANG_API: 'https://route.showapi.com/950-1',
+    HISTORY_API: 'https://route.showapi.com/119-42'
   }
   export default {
     newsConfig,
